@@ -1,6 +1,4 @@
-
 public class SimpleDate {
-
     private int day;
     private int month;
     private int year;
@@ -25,25 +23,24 @@ public class SimpleDate {
             return true;
         }
 
-        if (this.year == compared.year && this.month == compared.month &&
-                 this.day < compared.day) {
+        if (this.year == compared.year && this.month == compared.month && this.day < compared.day) {
             return true;
         }
 
         return false;
     }
-    
+
     public void advance() {
         if (this.day == 30) {
             this.day = 1;
             if (this.month == 12) {
                 this.month = 1;
-                this.year = this.year + 1;
+                this.year++;
             } else {
-                this.month = this.month + 1;
+                this.month++;
             }
         } else {
-            this.day = this.day + 1;
+            this.day++;
         }
     }
 

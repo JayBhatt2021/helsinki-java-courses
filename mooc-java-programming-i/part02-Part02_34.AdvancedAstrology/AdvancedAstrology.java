@@ -1,13 +1,10 @@
-
 public class AdvancedAstrology {
-
     public static void printStars(int number) {
         for (int i = 0; i < number; i++) {
             System.out.print("*");
         }
         System.out.println();
     }
-
 
     public static void printSpaces(int number) {
         for (int i = 0; i < number; i++) {
@@ -23,20 +20,18 @@ public class AdvancedAstrology {
     }
 
     public static void christmasTree(int height) {
-        int space = (height)-1;
+        int space = height - 1;
         int star = 1;
-        
-        for (int i=0; i < height;i++){
-            
+
+        for (int i = 0; i < height; i++) {
             printSpaces(space);
             printStars(star);
             space--;
-            star=star+2;
+            star = +2;
         }
-        
-        for (int i=0; i < 2;i++){
-            
-            printSpaces((height)-2);
+
+        for (int i = 0; i < 2; i++) {
+            printSpaces(height - 2);
             printStars(3);
         }
     }

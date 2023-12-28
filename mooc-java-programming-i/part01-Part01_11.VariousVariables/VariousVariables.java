@@ -1,9 +1,6 @@
-
 public class VariousVariables {
-
     public static void main(String[] args) {
         // MODIFY THESE:
-
         int numberOfChicken = 9000;
         double baconWeight = 0.1;
         String tractor = "Zetor";

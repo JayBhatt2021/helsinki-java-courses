@@ -1,8 +1,6 @@
-
 import java.util.Objects;
 
 public class Message {
-
     private String sender;
     private String content;
 
@@ -19,22 +17,25 @@ public class Message {
         return content;
     }
 
+    @Override
     public String toString() {
         return this.sender + ": " + this.content;
     }
 
-    // created using the "insert code" feature of NetBeans
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
+
         if (obj == null) {
             return false;
         }
+
         if (getClass() != obj.getClass()) {
             return false;
         }
+
         final Message other = (Message) obj;
         if (!Objects.equals(this.sender, other.sender)) {
             return false;
@@ -42,7 +43,7 @@ public class Message {
         if (!Objects.equals(this.content, other.content)) {
             return false;
         }
+
         return true;
     }
-
 }

@@ -1,12 +1,12 @@
-
 import java.util.Scanner;
 
 public class GradesAndPoints {
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+
         System.out.println("Give points [0-100]:");
         int point = Integer.valueOf(scan.nextLine());
+
         String g = "Grade: ";
         if (point < 0) {
             System.out.println(g + "impossible!");

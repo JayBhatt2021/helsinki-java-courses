@@ -1,6 +1,4 @@
-
 public class Greatest {
-
     public static int greatest(int number1, int number2, int number3) {
         //write some code here
         if (number1 > number2 && number1 > number3) {

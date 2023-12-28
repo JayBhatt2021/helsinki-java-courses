@@ -1,8 +1,11 @@
-
 public class Main {
-
     public static void main(String[] args) {
+        MessageService ms = new MessageService();
+        ms.add("Jay", "Hi there!");
+        ms.add("Jay", "How are you?");
 
-        // Try out your class here
+        for (Message m : ms.getMessages()) {
+            System.out.println(m);
+        }
     }
 }

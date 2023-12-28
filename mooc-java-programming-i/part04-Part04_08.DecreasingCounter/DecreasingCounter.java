@@ -1,6 +1,4 @@
-
 public class DecreasingCounter {
-
     private int value;  // an object variable for storing the value of the counter
 
     public DecreasingCounter(int initialValue) {
@@ -19,10 +17,8 @@ public class DecreasingCounter {
             this.value--;
         }
     }
-    
+
     public void reset() {
         this.value = 0;
     }
-
-    // the other methods go here
 }

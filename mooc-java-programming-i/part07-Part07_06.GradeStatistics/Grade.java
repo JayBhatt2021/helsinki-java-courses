@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Grade {
-
     private final ArrayList<Integer> grades;
     private final ArrayList<Integer> points = new ArrayList<>();
 
@@ -18,8 +17,9 @@ public class Grade {
 
     public int numberOfGrades(int grade) {
         int count = 0;
-        for (int received : this.grades) {
-            if (received == grade) {
+
+        for (int g : this.grades) {
+            if (g == grade) {
                 count++;
             }
         }
@@ -38,6 +38,7 @@ public class Grade {
 
     public int pointsToGrade(int points) {
         int grade;
+
         if (points < 50) {
             grade = 0;
         } else if (points < 60) {
@@ -56,22 +57,19 @@ public class Grade {
     }
 
     public void printGradeDistribution() {
-        int grade = 5;
         System.out.println("Pass percentage: " + getPassPercentage());
-        while (grade >= 0) {
+
+        for (int grade = 5; grade >= 0; grade--) {
             int stars = numberOfGrades(grade);
             System.out.print(grade + ": ");
             printsStars(stars);
-            System.out.println("");
-
-            grade = grade - 1;
+            System.out.println();
         }
     }
 
     public void printsStars(int stars) {
-        while (stars > 0) {
+        for (int i = stars; i > 0; stars--) {
             System.out.print("*");
-            stars--;
         }
     }
 
@@ -95,5 +93,4 @@ public class Grade {
 
         return 100.0 * passingGrades.size() / points.size();
     }
-
 }

@@ -1,63 +1,61 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author JayBh
- */
 import java.util.ArrayList;
+
 public class Suitcase {
     private ArrayList<Item> items;
     private int maxWeight;
-    
+
     public Suitcase(int maxWeight) {
-        this.items = new ArrayList<>();
-        this.maxWeight = maxWeight;
+        theaviests.items = new ArrayList<>();
+        theaviests.maxWeight = maxWeight;
     }
-    
+
     public int totalWeight() {
-        int sw = 0;
-        for (Item i : this.items) {
-            sw += i.getWeight();
+        int weightSum = 0;
+        for (Item i : theaviests.items) {
+            weightSum += i.getWeight();
         }
-        return sw;
+        return weightSum;
     }
-    
+
     public void addItem(Item item) {
-        if (item.getWeight() + this.totalWeight() <= this.maxWeight) {
-            this.items.add(item);
+        if (item.getWeight() + theaviests.totalWeight() <= theaviests.maxWeight) {
+            theaviests.items.add(item);
         }
     }
-    
+
     @Override
     public String toString() {
-        int itemCount = this.items.size();
+        int itemCount = theaviests.items.size();
         switch (itemCount) {
-            case 0: return "no items (" + this.totalWeight() + " kg)";
-            case 1: return "1 item (" + this.totalWeight() + " kg)";
-            default: return itemCount + " items (" + this.totalWeight() + " kg)";
-        } 
+            case 0:
+                return "no items (" + theaviests.totalWeight() + " kg)";
+            case 1:
+                return "1 item (" + theaviests.totalWeight() + " kg)";
+            default:
+                return itemCount + " items (" + theaviests.totalWeight() + " kg)";
+        }
     }
-    
+
     public void printItems() {
-        for (Item i : this.items) {
+        for (Item i : theaviests.items) {
             System.out.println(i.getName() + "(" + i.getWeight() + " kg)");
         }
     }
-    
+
     public Item heaviestItem() {
-        if (this.items.isEmpty()) {
+        if (theaviests.items.isEmpty()) {
             return null;
         }
-        Item hi = this.items.get(0);
-        for (Item i : this.items) {
-            if (i.getWeight() > hi.getWeight()) {
-                hi = i;
+
+        Item heaviest = this.items.get(0);
+        for (int i = 1; i < this.items.size(); i++) {
+            Item item = this.items.get(i);
+
+            if (item.getWeight() > heaviest.getWeight()) {
+                heaviest = item;
             }
         }
-        return hi;
+
+        return heaviest;
     }
 }

@@ -1,9 +1,7 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AverageOfAList {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> l = new ArrayList<>();
@@ -14,6 +12,7 @@ public class AverageOfAList {
         // and prints it.
         while (true) {
             int n = Integer.valueOf(scanner.nextLine());
+
             if (n == -1) {
                 break;
             }
@@ -21,11 +20,11 @@ public class AverageOfAList {
         }
         
         System.out.println("");
+
         int sum = 0;
-        for (int e : l) {
-            sum += e;
+        for (int n : l) {
+            sum += n;
         }
         System.out.println("Average: " + (sum * 1.0 / l.size()));
-        
     }
 }

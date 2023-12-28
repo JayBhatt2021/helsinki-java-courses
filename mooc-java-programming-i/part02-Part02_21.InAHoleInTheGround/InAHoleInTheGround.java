@@ -1,5 +1,4 @@
 public class InAHoleInTheGround {
-
     public static void main(String[] args) {
         printText();
     }

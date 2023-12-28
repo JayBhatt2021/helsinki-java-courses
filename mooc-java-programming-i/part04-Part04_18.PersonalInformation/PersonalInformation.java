@@ -1,6 +1,4 @@
-
 public class PersonalInformation {
-
     private String firstName;
     private String lastName;
     private String identificationNumber;

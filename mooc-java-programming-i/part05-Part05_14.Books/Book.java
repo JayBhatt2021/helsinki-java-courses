@@ -1,6 +1,4 @@
-
 public class Book {
-
     private String name;
     private int publicationYear;
 
@@ -22,10 +20,12 @@ public class Book {
         if (this == compared) {
             return true;
         }
+
         if (!(compared instanceof Book)) {
             return false;
         }
+
         Book comparedBook = (Book) compared;
-        return this.name.equals(comparedBook.name) && this.publicationYear == comparedBook.publicationYear; 
+        return this.name.equals(comparedBook.name) && this.publicationYear == comparedBook.publicationYear;
     }
 }

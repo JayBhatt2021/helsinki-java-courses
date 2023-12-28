@@ -1,6 +1,4 @@
-
 public class Book {
-
     private int id;
     private String name;
 
@@ -21,5 +19,4 @@ public class Book {
     public String toString() {
         return "(id: " + id + "; name: " + name + ")";
     }
-
 }

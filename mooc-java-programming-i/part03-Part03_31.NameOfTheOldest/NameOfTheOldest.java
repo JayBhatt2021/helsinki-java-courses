@@ -1,31 +1,34 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NameOfTheOldest {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<>(); 
+        ArrayList<String> list = new ArrayList<>();
+
         while (true) {
-            String i = scanner.nextLine();
-            if (i.equals("")) {
+            String s = scanner.nextLine();
+
+            if (s.equals("")) {
                 break;
             }
-            list.add(i);
+            list.add(s);
         }
-        String s = list.get(0), largestName = "";
-        int largestAge = 0;
-        for (String element : list) {
+
+        String s = list.get(0), oldestName = "";
+        int oldestAge = 0;
+
+        for (int i = 1; i < list.size(); i++) {
+            int element = list.get(i);
             String[] parts = element.split(",");
             String name = parts[0];
             int age = Integer.valueOf(parts[1]);
-            if (age > largestAge) {
-                largestName = name;
-                largestAge = age;
+
+            if (age > oldestAge) {
+                oldestName = name;
+                oldestAge = age;
             }
         }
-        System.out.println("Name of the oldest: " + largestName);
-
+        System.out.println("Name of the oldest: " + oldestName);
     }
 }

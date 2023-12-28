@@ -1,12 +1,12 @@
-
 import java.util.Scanner;
 
 public class GiftTax {
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+
         System.out.println("Value of the gift?");
         double price = Double.valueOf(scan.nextLine());
+
         if (price < 5000) {
             System.out.println("No tax!");
         } else if (price >= 5000 && price < 25000) {

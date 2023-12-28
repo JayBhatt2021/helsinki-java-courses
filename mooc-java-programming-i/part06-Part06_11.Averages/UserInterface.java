@@ -1,8 +1,6 @@
-
 import java.util.Scanner;
 
 public class UserInterface {
-
     private GradeRegister register;
     private Scanner scanner;
 
@@ -13,8 +11,9 @@ public class UserInterface {
 
     public void start() {
         readPoints();
-        System.out.println("");
+        System.out.println();
         printGradeDistribution();
+
         System.out.println("The average of points: " + this.register.averageOfPoints());
         System.out.println("The average of grades: " + this.register.averageOfGrades());
     }
@@ -39,22 +38,17 @@ public class UserInterface {
     }
 
     public void printGradeDistribution() {
-        int grade = 5;
-        while (grade >= 0) {
+        for (int grade = 5; grade >= 0; grade--) {
             int stars = register.numberOfGrades(grade);
             System.out.print(grade + ": ");
             printsStars(stars);
-            System.out.println("");
-
-            grade = grade - 1;
+            System.out.println();
         }
-        
     }
 
     public static void printsStars(int stars) {
-        while (stars > 0) {
+        for (int i = stars; i > 0; i--) {
             System.out.print("*");
-            stars--;
         }
     }
 }

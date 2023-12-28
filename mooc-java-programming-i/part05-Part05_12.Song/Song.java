@@ -1,6 +1,4 @@
-
 public class Song {
-
     private String artist;
     private String name;
     private int durationInSeconds;
@@ -21,15 +19,14 @@ public class Song {
         if (this == compared) {
             return true;
         }
-        
+
         if (!(compared instanceof Song)) {
             return false;
         }
-        
+
         Song comparedSong = (Song) compared;
-        if (this.artist.equals(comparedSong.artist) &&
-            this.name.equals(comparedSong.name) &&
-            this.durationInSeconds == comparedSong.durationInSeconds) {
+        if (this.artist.equals(comparedSong.artist) && this.name.equals(comparedSong.name)
+                && this.durationInSeconds == comparedSong.durationInSeconds) {
             return true;
         }
         return false;

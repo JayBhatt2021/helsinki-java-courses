@@ -1,14 +1,11 @@
-
 public class Money {
-
     private final int euros;
     private final int cents;
 
     public Money(int euros, int cents) {
-
         if (cents > 99) {
-            euros = euros + cents / 100;
-            cents = cents % 100;
+            euros += (cents / 100);
+            cents %= 100;
         }
 
         this.euros = euros;
@@ -23,6 +20,7 @@ public class Money {
         return this.cents;
     }
 
+    @Override
     public String toString() {
         String zero = "";
         if (this.cents < 10) {
@@ -35,30 +33,35 @@ public class Money {
     public Money plus(Money addition) {
         int sumEuros = this.euros + addition.euros;
         int sumCents = this.cents + addition.cents;
-        Money newMoney = new Money(sumEuros, sumCents);
-        return newMoney;
+
+        return new Money(sumEuros, sumCents);
     }
-    
+
     public boolean lessThan(Money compared) {
         if (this.euros < compared.euros) {
             return true;
         }
+
         if (this.euros == compared.euros && this.cents < compared.cents) {
             return true;
         }
+
         return false;
     }
-    
+
     public Money minus(Money decreaser) {
-        int euroDif = this.euros - decreaser.euros;
-        int centsDif = this.cents - decreaser.cents;
-        if (centsDif < 0) {
-            centsDif = 100 - Math.abs(centsDif);
-            euroDif--;
+        int euroDiff = this.euros - decreaser.euros;
+        int centsDiff = this.cents - decreaser.cents;
+
+        if (centsDiff < 0) {
+            centsDiff = 100 - Math.abs(centsDiff);
+            euroDiff--;
         }
-        if (euroDif < 0) {
+
+        if (euroDiff < 0) {
             return new Money(0, 0);
         }
-        return new Money(euroDif, centsDif);
+
+        return new Money(euroDiff, centsDiff);
     }
 }

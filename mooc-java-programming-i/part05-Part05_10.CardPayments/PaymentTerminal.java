@@ -1,11 +1,7 @@
-
 public class PaymentTerminal {
-
-
     private double money;  // amount of cash
     private int affordableMeals; // number of sold affordable meals
     private int heartyMeals;  // number of sold hearty meals
-
 
     public PaymentTerminal() {
         // register initially has 1000 euros of money
@@ -41,7 +37,7 @@ public class PaymentTerminal {
             return payment;
         }
     }
-    
+
     public boolean eatAffordably(PaymentCard card) {
         // an affordable meal costs 2.50 euros
         // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
@@ -67,14 +63,14 @@ public class PaymentTerminal {
             return false;
         }
     }
-    
+
     public void addMoneyToCard(PaymentCard card, double sum) {
         if (sum >= 0) {
             card.addMoney(sum);
             this.money += sum;
         }
     }
-    
+
     @Override
     public String toString() {
         return "money: " + money + ", number of sold affordable meals: " + affordableMeals + ", number of sold hearty meals: " + heartyMeals;

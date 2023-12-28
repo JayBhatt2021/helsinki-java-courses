@@ -1,9 +1,7 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Searching {
-
     public static void main(String[] args) {
         // The program below is meant for testing the search algorithms you'll write
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +38,6 @@ public class Searching {
         } else {
             System.out.println("Found it! " + books.get(binarySearchId));
         }
-
     }
 
     public static int linearSearch(ArrayList<Book> books, int searchedId) {
@@ -55,9 +52,11 @@ public class Searching {
     public static int binarySearch(ArrayList<Book> books, int searchedId) {
         int begin = 0;
         int end = books.size() - 1;
+
         while (begin <= end) {
             int middle = (begin + end) / 2;
             Book bookMiddle = books.get(middle);
+
             if (searchedId == bookMiddle.getId()) {
                 return middle;
             } else if (searchedId < bookMiddle.getId()) {
@@ -66,7 +65,7 @@ public class Searching {
                 begin = middle + 1;
             }
         }
+
         return -1;
     }
 }
-

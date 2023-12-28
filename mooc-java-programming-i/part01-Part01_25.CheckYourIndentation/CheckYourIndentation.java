@@ -1,8 +1,6 @@
-
 import java.util.Scanner;
 
 public class CheckYourIndentation {
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
@@ -10,6 +8,7 @@ public class CheckYourIndentation {
         int first = Integer.valueOf(scan.nextLine());
         System.out.println("Give another number: ");
         int second = Integer.valueOf(scan.nextLine());
+
         if (first == second) {
             System.out.println("Same!");
         } else if (first > second) {

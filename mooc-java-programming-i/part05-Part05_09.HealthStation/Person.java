@@ -1,9 +1,7 @@
 /*
  *  Do not change the behavior of this class
  */
-
 public class Person {
-
     private String name;
     private int age;
     private int height;
@@ -25,11 +23,7 @@ public class Person {
     }
 
     public boolean isOfLegalAge() {
-        if (this.age > 17) {
-            return true;
-        }
-
-        return false;
+        return this.age > 17;
     }
 
     public void setHeight(int height) {
@@ -50,7 +44,6 @@ public class Person {
 
     public double bmi() {
         double heightInMeters = this.height / 100.0;
-
         return this.weight / (heightInMeters * heightInMeters);
     }
 

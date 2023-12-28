@@ -1,10 +1,13 @@
-
 import java.util.ArrayList;
 
 public class RemoveLast {
-
     public static void main(String[] args) {
-        // Try your method in here
+        ArrayList<String> strings = new ArrayList<>;
+        strings.add("John");
+        strings.add("Jack");
+        strings.add("Jay");
+
+        removeLast(strings);
     }
     
     public static void removeLast(ArrayList<String> strings) {
@@ -13,5 +16,4 @@ public class RemoveLast {
         }
         strings.remove(strings.size() - 1);
     }
-
 }

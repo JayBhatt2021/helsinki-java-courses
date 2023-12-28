@@ -1,8 +1,6 @@
-
 import java.util.Scanner;
 
 public class OddOrEven {
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
@@ -14,6 +12,7 @@ public class OddOrEven {
         } else {
             System.out.println("Number " + num + " is odd.");
         }
+
         // HINT:
         // You can find out if a number is even or odd easily using the modulo operator %
         // Try the following commands to see what they print
@@ -26,6 +25,6 @@ public class OddOrEven {
         // System.out.println( 7%2 );
         // int luku = 8
         // System.out.println( luku%2 );
-        // So, by taking the modulo of a number and two you can find out if it is even or odd !
+        // So, by taking the modulo of a number and two you can find out if it is even or odd!
     }
 }

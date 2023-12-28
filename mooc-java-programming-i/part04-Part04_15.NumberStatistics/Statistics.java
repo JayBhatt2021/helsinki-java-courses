@@ -1,4 +1,3 @@
-
 public class Statistics {
     private int count;
     private int sum;
@@ -16,7 +15,7 @@ public class Statistics {
     public int getCount() {
         return this.count;
     }
-    
+
     public int sum() {
         return this.sum;
     }
@@ -27,6 +26,5 @@ public class Statistics {
         } else {
             return (double) this.sum / this.count;
         }
-        
     }
 }
