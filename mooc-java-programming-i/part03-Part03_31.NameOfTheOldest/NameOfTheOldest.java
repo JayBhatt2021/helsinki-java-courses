@@ -19,7 +19,7 @@ public class NameOfTheOldest {
         int oldestAge = 0;
 
         for (int i = 1; i < list.size(); i++) {
-            int element = list.get(i);
+            String element = list.get(i);
             String[] parts = element.split(",");
             String name = parts[0];
             int age = Integer.valueOf(parts[1]);

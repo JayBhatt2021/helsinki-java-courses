@@ -3,9 +3,9 @@ public class MainProgram {
         Counter c = new Counter();
 
         c.increase();
-        c.increaseBy(3);
+        c.increase(3);
         c.decrease();
-        c.decreaseBy(3);
+        c.decrease(3);
         System.out.println(c.value());
     }
 }

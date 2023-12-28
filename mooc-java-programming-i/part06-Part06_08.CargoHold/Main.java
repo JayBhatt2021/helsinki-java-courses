@@ -4,8 +4,8 @@ public class Main {
         Item clothes = new Item("Clothes", 10);
 
         Suitcase jaysCase = new Suitcase(10);
-        adasCase.addItem(book);
-        adasCase.addItem(clothes);
+        jaysCase.addItem(book);
+        jaysCase.addItem(clothes);
 
         Suitcase johnsCase = new Suitcase(9);
         johnsCase.addItem(clothes);

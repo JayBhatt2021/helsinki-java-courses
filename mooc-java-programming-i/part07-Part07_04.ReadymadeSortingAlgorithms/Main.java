@@ -10,17 +10,17 @@ public class Main {
         String[] sArray = {"Jay", "John", "Bob"};
         sort(sArray);
 
-        ArrayList<Integer> iList = new ArrayList<>;
+        ArrayList<Integer> iList = new ArrayList<>();
         iList.add(3);
         iList.add(5);
         iList.add(3);
-        sort(iList);
+        sortIntegers(iList);
 
-        ArrayList<String> sList = new ArrayList<>;
+        ArrayList<String> sList = new ArrayList<>();
         sList.add("Jay");
         sList.add("John");
         sList.add("Bob");
-        sort(sList);
+        sortStrings(sList);
     }
 
     public static void sort(int[] array) {

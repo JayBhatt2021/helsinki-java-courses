@@ -68,7 +68,7 @@ public class Grade {
     }
 
     public void printsStars(int stars) {
-        for (int i = stars; i > 0; stars--) {
+        for (int i = stars; i > 0; i--) {
             System.out.print("*");
         }
     }

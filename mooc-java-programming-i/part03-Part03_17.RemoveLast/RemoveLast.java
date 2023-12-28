@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class RemoveLast {
     public static void main(String[] args) {
-        ArrayList<String> strings = new ArrayList<>;
+        ArrayList<String> strings = new ArrayList<>();
         strings.add("John");
         strings.add("Jack");
         strings.add("Jay");

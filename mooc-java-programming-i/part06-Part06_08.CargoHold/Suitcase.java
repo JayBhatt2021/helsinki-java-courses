@@ -5,45 +5,45 @@ public class Suitcase {
     private int maxWeight;
 
     public Suitcase(int maxWeight) {
-        theaviests.items = new ArrayList<>();
-        theaviests.maxWeight = maxWeight;
+        this.items = new ArrayList<>();
+        this.maxWeight = maxWeight;
     }
 
     public int totalWeight() {
         int weightSum = 0;
-        for (Item i : theaviests.items) {
+        for (Item i : this.items) {
             weightSum += i.getWeight();
         }
         return weightSum;
     }
 
     public void addItem(Item item) {
-        if (item.getWeight() + theaviests.totalWeight() <= theaviests.maxWeight) {
-            theaviests.items.add(item);
+        if (item.getWeight() + this.totalWeight() <= this.maxWeight) {
+            this.items.add(item);
         }
     }
 
     @Override
     public String toString() {
-        int itemCount = theaviests.items.size();
+        int itemCount = this.items.size();
         switch (itemCount) {
             case 0:
-                return "no items (" + theaviests.totalWeight() + " kg)";
+                return "no items (" + this.totalWeight() + " kg)";
             case 1:
-                return "1 item (" + theaviests.totalWeight() + " kg)";
+                return "1 item (" + this.totalWeight() + " kg)";
             default:
-                return itemCount + " items (" + theaviests.totalWeight() + " kg)";
+                return itemCount + " items (" + this.totalWeight() + " kg)";
         }
     }
 
     public void printItems() {
-        for (Item i : theaviests.items) {
+        for (Item i : this.items) {
             System.out.println(i.getName() + "(" + i.getWeight() + " kg)");
         }
     }
 
     public Item heaviestItem() {
-        if (theaviests.items.isEmpty()) {
+        if (this.items.isEmpty()) {
             return null;
         }
 
