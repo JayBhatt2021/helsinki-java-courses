@@ -32,7 +32,7 @@ public class SavingsCalculatorApplication extends Application {
         monthlySavingsSlider.setShowTickMarks(true);
 
         Label monthlySavingsAmountLabel = new Label("25.0");
-        monthlySavingsSlider.valueProperty().addListener((_, __, monthlySavingsValue) -> {
+        monthlySavingsSlider.valueProperty().addListener((unused1, unused2, monthlySavingsValue) -> {
             monthlySavingsAmountLabel.setText(this.roundDouble(monthlySavingsValue.doubleValue()));
         });
 
@@ -42,7 +42,7 @@ public class SavingsCalculatorApplication extends Application {
         monthlySavingsLayout.setCenter(monthlySavingsSlider);
         monthlySavingsLayout.setRight(monthlySavingsAmountLabel);
 
-        monthlySavingsSlider.setOnMouseReleased(_ -> {
+        monthlySavingsSlider.setOnMouseReleased(unused -> {
             this.generateMonthlySavingsData(monthlySavingsSlider.getValue());
 
             mainLayout.setCenter(
@@ -59,7 +59,7 @@ public class SavingsCalculatorApplication extends Application {
         annualInterestRateSlider.setShowTickLabels(true);
 
         Label annualInterestRateAmountLabel = new Label("0.0");
-        annualInterestRateSlider.valueProperty().addListener((_, __, annualInterestRateValue) -> {
+        annualInterestRateSlider.valueProperty().addListener((unused1, unused2, annualInterestRateValue) -> {
             annualInterestRateAmountLabel.setText(this.roundDouble(annualInterestRateValue.doubleValue()));
         });
 
@@ -69,7 +69,7 @@ public class SavingsCalculatorApplication extends Application {
         annualInterestRateLayout.setCenter(annualInterestRateSlider);
         annualInterestRateLayout.setRight(annualInterestRateAmountLabel);
 
-        annualInterestRateSlider.setOnMouseReleased(_ -> {
+        annualInterestRateSlider.setOnMouseReleased(unused -> {
             this.generateAnnualInterestRateData(
                     monthlySavingsSlider.getValue(),
                     annualInterestRateSlider.getValue()
@@ -103,7 +103,7 @@ public class SavingsCalculatorApplication extends Application {
         yAxis.setLabel("Savings");
 
         LineChart<Number, Number> graphic = new LineChart<>(xAxis, yAxis);
-        graphic.setTitle("Savings counter");
+        graphic.setTitle("Savings Calculator");
 
         this.generateMonthlySavingsData(25.0);
         graphic.getData().add(this.transformMonthlySavingsData());
@@ -131,7 +131,7 @@ public class SavingsCalculatorApplication extends Application {
         yAxis.setLabel("Savings");
 
         graphic = new LineChart<>(xAxis, yAxis);
-        graphic.setTitle("Savings counter");
+        graphic.setTitle("Savings Calculator");
 
         graphic.getData().clear();
         graphic.getData().add(monthlySavingsData);

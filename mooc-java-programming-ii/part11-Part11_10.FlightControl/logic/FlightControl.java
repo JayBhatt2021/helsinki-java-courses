@@ -2,13 +2,12 @@ package logic;
 
 import java.util.Collection;
 
-import FlightControl.domain.Flight;
-import FlightControl.domain.Airplane;
+import domain.Flight;
+import domain.Airplane;
+import domain.Place;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import FlightControl.domain.Place;
 
 public class FlightControl {
     private HashMap<String, Flight> flights;

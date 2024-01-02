@@ -3,7 +3,7 @@ public class Main {
         Abbreviations a = new Abbreviations();
         a.addAbbreviation("lol", "laugh out loud");
         a.addAbbreviation("lol", "laugh out loud");
-        a.addAbbreviation("btw", " by the WAY ");
+        a.addAbbreviation("btw", "by the way");
 
         System.out.println(a.hasAbbreviation("btw"));
         System.out.println(a.findExplanationFor("btw"));

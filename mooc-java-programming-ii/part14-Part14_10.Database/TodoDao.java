@@ -17,7 +17,7 @@ public class TodoDao {
         List<Todo> todos = new ArrayList<>();
 
         try (Connection connection = this.createConnectionAndEnsureDatabase()) {
-            ResultSet results = connection.prepareStatement("SELECT * FROM Todo").executeQuery());
+            ResultSet results = connection.prepareStatement("SELECT * FROM Todo").executeQuery();
 
             while (results.next()) {
                 todos.add(

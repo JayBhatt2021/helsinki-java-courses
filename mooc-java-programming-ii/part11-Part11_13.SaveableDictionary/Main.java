@@ -3,7 +3,7 @@ public class Main {
         SaveableDictionary dict = new SaveableDictionary("words.txt");
 
         dict.load();
-        dict.remove("olut");
+        dict.delete("olut");
         dict.save();
     }
 }

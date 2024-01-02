@@ -12,7 +12,7 @@ public class ReadingFilesPerLine {
         }
     }
 
-    public static List<String> read(String file) {
+    public static ArrayList<String> read(String file) {
         ArrayList<String> fileRows = new ArrayList<>();
 
         try {

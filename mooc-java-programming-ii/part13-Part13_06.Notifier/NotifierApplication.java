@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class NotifierApplication extends Application {
     @Override
-    public void start(Stage window) {=
+    public void start(Stage window) {
         TextField topTextField = new TextField("");
         Button button = new Button("Update");
         Label label = new Label();
@@ -16,12 +16,13 @@ public class NotifierApplication extends Application {
         VBox labelBar = new VBox();
         labelBar.getChildren().addAll(topTextField, button, label);
 
-        Scene view = new Scene(labelBar, 200, 100);
         button.setOnAction(event -> {
             label.setText(topTextField.getText());
         });
 
+        Scene view = new Scene(labelBar, 200, 100);
         window.setScene(view);
+
         window.show();
     }
 

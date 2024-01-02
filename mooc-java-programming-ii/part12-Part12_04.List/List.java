@@ -36,7 +36,7 @@ public class List<Type> {
             return;
         }
 
-        moveToTheLeft(indexOfValue);
+        this.moveToLeft(indexOfValue);
         this.firstFreeIndex--;
     }
 

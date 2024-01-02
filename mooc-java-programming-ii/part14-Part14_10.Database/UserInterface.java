@@ -12,7 +12,7 @@ public class UserInterface {
 
     public void start() throws SQLException {
         while (true) {
-            System.out.println("\nEnter command:");
+            System.out.println("Enter command:");
             System.out.println("1) list");
             System.out.println("2) add");
             System.out.println("3) mark as done");
@@ -21,12 +21,14 @@ public class UserInterface {
 
             System.out.print("> ");
             String command = this.scanner.nextLine();
+            System.out.println();
 
             if (command.equals("x")) {
                 break;
             }
 
             this.makeChoice(Integer.valueOf(command));
+            System.out.println();
         }
 
         System.out.println("Thank you!");
@@ -50,8 +52,6 @@ public class UserInterface {
                 System.out.println("Please enter a valid command.");
                 break;
         }
-
-        System.out.println();
     }
 
     private void list() throws SQLException {

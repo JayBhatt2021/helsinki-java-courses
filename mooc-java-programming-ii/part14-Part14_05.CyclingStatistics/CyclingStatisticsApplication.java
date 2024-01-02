@@ -5,10 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.barChart.BarChart;
-import javafx.scene.barChart.CategoryAxis;
-import javafx.scene.barChart.NumberAxis;
-import javafx.scene.barChart.XYChart;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -40,7 +40,7 @@ public class CyclingStatisticsApplication extends Application {
         ListView<String> listView = new ListView<>(locationList);
         gridPane.add(listView, 0, 1);
 
-        listView.setOnMouseClicked((MouseEvent _) -> {
+        listView.setOnMouseClicked((MouseEvent event) -> {
             String chosenLocation = listView.getSelectionModel().getSelectedItem();
             Map<String, Integer> monthsToCyclists = cyclingStatistics.monthlyCyclists(chosenLocation);
 

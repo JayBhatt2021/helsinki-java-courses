@@ -2,6 +2,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BooksFromFile {
     public static void main(String[] args) {
@@ -12,9 +13,7 @@ public class BooksFromFile {
         }
     }
 
-    public static List<Book> readBooks(String file) {
-        ArrayList<Book> books = new ArrayList<>();
-
+    public static ArrayList<Book> readBooks(String file) {
         try {
             return Files.lines(Paths.get(file))
                     .map(fileLine -> fileLine.split(","))
@@ -27,11 +26,11 @@ public class BooksFromFile {
                                     splitParts[3]
                             )
                     )
-                    .forEach(book -> books.add(book));
+                    .collect(Collectors.toCollection(ArrayList::new));
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-        return books;
+        return new ArrayList<>();
     }
 }

@@ -8,6 +8,9 @@ public abstract class Character {
     private final Polygon character;
     private Point2D movement;
 
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
+
     public Character(Polygon character, int x, int y) {
         this.character = character;
         this.character.setTranslateX(x);
@@ -41,19 +44,19 @@ public abstract class Character {
         this.character.setTranslateY(this.character.getTranslateY() + this.movement.getY());
 
         if (this.character.getTranslateX() < 0) {
-            this.character.setTranslateX(this.character.getTranslateX() + AsteroidsApplication.WIDTH);
+            this.character.setTranslateX(this.character.getTranslateX() + WIDTH);
         }
 
-        if (this.character.getTranslateX() > AsteroidsApplication.WIDTH) {
-            this.character.setTranslateX(this.character.getTranslateX() - AsteroidsApplication.WIDTH);
+        if (this.character.getTranslateX() > WIDTH) {
+            this.character.setTranslateX(this.character.getTranslateX() - WIDTH);
         }
 
         if (this.character.getTranslateY() < 0) {
-            this.character.setTranslateY(this.character.getTranslateY() + AsteroidsApplication.HEIGHT);
+            this.character.setTranslateY(this.character.getTranslateY() + HEIGHT);
         }
 
-        if (this.character.getTranslateY() > AsteroidsApplication.HEIGHT) {
-            this.character.setTranslateY(this.character.getTranslateY() - AsteroidsApplication.HEIGHT);
+        if (this.character.getTranslateY() > HEIGHT) {
+            this.character.setTranslateY(this.character.getTranslateY() - HEIGHT);
         }
     }
 

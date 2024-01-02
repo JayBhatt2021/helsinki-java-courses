@@ -22,9 +22,9 @@ public class Program {
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                sb.add(array[i][j]);
+                sb.append(array[i][j]);
             }
-            sb.add("\n");
+            sb.append("\n");
         }
 
         return sb.toString();

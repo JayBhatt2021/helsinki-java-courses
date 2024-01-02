@@ -9,6 +9,8 @@ public class Dictionary {
     public Dictionary() {
         this.words = new ArrayList<>();
         this.translations = new HashMap<>();
+
+        this.add("hola", "hello");
     }
 
     public String get(String word) {

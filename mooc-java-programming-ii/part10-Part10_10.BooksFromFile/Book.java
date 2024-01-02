@@ -1,4 +1,3 @@
-
 public class Book {
     private String name;
     private int publishingYear;
@@ -26,5 +25,11 @@ public class Book {
 
     public String getAuthor() {
         return this.author;
+    }
+
+    @Override
+    public String toString() {
+        return "'" + this.name + "' by " + this.author + " was published in " + this.publishingYear + " and has " +
+                this.pageCount + " pages.";
     }
 }

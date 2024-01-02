@@ -1,4 +1,6 @@
-package asteroids;
+import asteroids.Asteroid;
+import asteroids.Projectile;
+import asteroids.Ship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,8 +19,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AsteroidsApplication extends Application {
-    private Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
-    private List<Projectile> projectiles = new ArrayList<>();
+    Random random = new Random();
+    Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
+    List<Projectile> projectiles = new ArrayList<>();
 
     public static int WIDTH = 800;
     public static int HEIGHT = 600;
@@ -49,11 +52,11 @@ public class AsteroidsApplication extends Application {
 
         // Event Listeners
         scene.setOnKeyPressed(keyPress -> {
-            this.pressedKeys.put(keyPress.getCode(), Boolean.TRUE);
+            pressedKeys.put(keyPress.getCode(), Boolean.TRUE);
         });
 
         scene.setOnKeyReleased(keyRelease -> {
-            this.pressedKeys.put(keyRelease.getCode(), Boolean.FALSE);
+            pressedKeys.put(keyRelease.getCode(), Boolean.FALSE);
         });
 
         new AnimationTimer() {
@@ -70,20 +73,20 @@ public class AsteroidsApplication extends Application {
                 }
 
                 // Ship Movement Controls
-                if (this.pressedKeys.getOrDefault(KeyCode.LEFT, false)) {
+                if (pressedKeys.getOrDefault(KeyCode.LEFT, false)) {
                     ship.turnLeft();
                 }
 
-                if (this.pressedKeys.getOrDefault(KeyCode.RIGHT, false)) {
+                if (pressedKeys.getOrDefault(KeyCode.RIGHT, false)) {
                     ship.turnRight();
                 }
 
-                if (this.pressedKeys.getOrDefault(KeyCode.UP, false)) {
+                if (pressedKeys.getOrDefault(KeyCode.UP, false)) {
                     ship.accelerate();
                 }
 
                 // Ship Shooting Controls
-                if (this.pressedKeys.getOrDefault(KeyCode.SPACE, false) && projectiles.size() < 3) {
+                if (pressedKeys.getOrDefault(KeyCode.SPACE, false) && projectiles.size() < 3) {
                     Projectile projectile = new Projectile(
                             (int) ship.getCharacter().getTranslateX(),
                             (int) ship.getCharacter().getTranslateY()
