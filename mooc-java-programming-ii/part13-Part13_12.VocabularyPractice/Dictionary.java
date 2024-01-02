@@ -1,5 +1,3 @@
-package application;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -21,6 +19,7 @@ public class Dictionary {
         if (!this.translations.containsKey(word)) {
             this.words.add(word);
         }
+
         this.translations.putIfAbsent(word, translation);
     }
 

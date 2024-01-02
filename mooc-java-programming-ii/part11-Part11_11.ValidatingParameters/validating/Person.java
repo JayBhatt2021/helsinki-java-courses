@@ -9,7 +9,7 @@ public class Person {
             throw new IllegalArgumentException("Name cannot be null, empty, or over 40 characters.");
         }
         this.name = name;
-        
+
         if (age < 0 || age > 120) {
             throw new IllegalArgumentException("Age cannot be less than 0 or greater than 120.");
         }
@@ -17,10 +17,10 @@ public class Person {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 }

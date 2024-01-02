@@ -1,6 +1,9 @@
 public class MainProgram {
     public static void main(String[] args) {
-        // you can create test code here. Call the methods that you'll implement
-        // during the course of this exercise
+        Checker c = new Checker();
+
+        System.out.println(c.isDayOfWeek("tue"));
+        System.out.println(c.allVowels("aaaaa"));
+        System.out.println(c.timeOfDay("23:59:59"));
     }
 }

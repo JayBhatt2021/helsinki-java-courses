@@ -1,6 +1,6 @@
 public class Human implements Comparable<Human> {
-    private int wage;
     private String name;
+    private int wage;
 
     public Human(String name, int wage) {
         this.name = name;
@@ -14,7 +14,7 @@ public class Human implements Comparable<Human> {
     public int getWage() {
         return wage;
     }
-    
+
     // Promotes descending sorts
     @Override
     public int compareTo(Human comparedHuman) {

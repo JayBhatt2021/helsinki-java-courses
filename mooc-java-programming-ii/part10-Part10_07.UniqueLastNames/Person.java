@@ -10,14 +10,14 @@ public class Person {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public int getBirthYear() {
-        return birthYear;
+        return this.birthYear;
     }
 }

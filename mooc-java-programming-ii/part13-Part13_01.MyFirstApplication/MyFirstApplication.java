@@ -1,5 +1,3 @@
-package myFirstApplication;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 

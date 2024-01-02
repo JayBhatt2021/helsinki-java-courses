@@ -1,5 +1,3 @@
-package ticTacToe;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,135 +8,111 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class TicTacToeApplication extends Application {
-    private boolean xstate;
+    private boolean xTurn;
     private boolean finished;
-    private final Label turn;
+    private final Label turnLabel;
     private final Button[] buttons;
 
     public TicTacToeApplication() {
-        this.xstate = true;
+        this.xTurn = true;
         this.finished = false;
-        this.turn = new Label("Turn: X");
+        this.turnLabel = new Label("Turn: X");
+
         this.buttons = new Button[9];
         for (int i = 0; i < 9; i++) {
-            buttons[i] = createButton();
+            this.buttons[i] = this.createButton();
         }
-    }
-
-    @Override
-    public void start(Stage window) {
-        BorderPane layout = new BorderPane();
-        layout.setPrefSize(310, 350);
-        turn.setFont(new Font(30.0));
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-
-        grid.add(buttons[0], 1, 0);
-        grid.add(buttons[1], 2, 0);
-        grid.add(buttons[2], 3, 0);
-        grid.add(buttons[3], 1, 1);
-        grid.add(buttons[4], 2, 1);
-        grid.add(buttons[5], 3, 1);
-        grid.add(buttons[6], 1, 2);
-        grid.add(buttons[7], 2, 2);
-        grid.add(buttons[8], 3, 2);
-
-        layout.setTop(turn);
-        layout.setCenter(grid);
-
-        Scene view = new Scene(layout);
-
-        window.setScene(view);
-        window.show();
     }
 
     private Button createButton() {
-        Button btn = new Button(" ");
-        btn.setFont(new Font("Monospaced", 40));
-        btn.setPrefSize(90, 90);
+        Button button = new Button(" ");
+        button.setFont(new Font("Monospaced", 40));
+        button.setPrefSize(90, 90);
 
-        btn.setOnAction(event -> {
-            if (finished) return;
-            if (!btn.getText().equals(" ")) return;
-
-            if (xstate) {
-                btn.setText("X");
-                turn.setText("Turn: O");
-                xstate = false;
-            } else {
-                btn.setText("O");
-                turn.setText("Turn: X");
-                xstate = true;
+        button.setOnAction(event -> {
+            if (this.finished) {
+                return;
+            }
+            if (this.isUnavailable(button)) {
+                return;
             }
 
-            if (gameScratched() || gameWon()) {
-                turn.setText("The end!");
-                finished = true;
+            if (this.xTurn) {
+                button.setText("X");
+                this.turnLabel.setText("Turn: O");
+
+                this.xTurn = false;
+            } else {
+                button.setText("O");
+                this.turnLabel.setText("Turn: X");
+
+                this.xTurn = true;
+            }
+
+            if (this.gameScratched() || this.gameWon()) {
+                this.turnLabel.setText("The end!");
+                this.finished = true;
             }
         });
 
-        return btn;
+        return button;
     }
 
     private boolean gameScratched() {
-        return !buttons[0].getText().equals(" ") &&
-                !buttons[1].getText().equals(" ") &&
-                !buttons[2].getText().equals(" ") &&
-                !buttons[3].getText().equals(" ") &&
-                !buttons[4].getText().equals(" ") &&
-                !buttons[5].getText().equals(" ") &&
-                !buttons[6].getText().equals(" ") &&
-                !buttons[7].getText().equals(" ") &&
-                !buttons[8].getText().equals(" ");
+        return this.isUnavailable(this.buttons[0]) && this.isUnavailable(this.buttons[1]) &&
+                this.isUnavailable(this.buttons[2]) && this.isUnavailable(this.buttons[3]) &&
+                this.isUnavailable(this.buttons[4]) && this.isUnavailable(this.buttons[5]) &&
+                this.isUnavailable(this.buttons[6]) && this.isUnavailable(this.buttons[7]) &&
+                this.isUnavailable(this.buttons[8]);
     }
 
     private boolean gameWon() {
-        if (!buttons[0].getText().equals(" ")) {
-            if (buttons[0].getText().equals(buttons[1].getText()) && buttons[0].getText().equals(buttons[2].getText())) {
+        if (this.isUnavailable(this.buttons[0])) {
+            // Top Row
+            if (this.isEqual(this.buttons[0], this.buttons[1]) && this.isEqual(this.buttons[0], this.buttons[2])) {
                 return true;
             }
-        }
-        
-        if (!buttons[3].getText().equals(" ")) {
-            if (buttons[3].getText().equals(buttons[4].getText()) && buttons[3].getText().equals(buttons[5].getText())) {
+
+            // First Column
+            if (this.isEqual(this.buttons[0], this.buttons[3]) && this.isEqual(this.buttons[0], this.buttons[6])) {
                 return true;
             }
-        }
-        
-        if (!buttons[6].getText().equals(" ")) {
-            if (buttons[6].getText().equals(buttons[7].getText()) && buttons[6].getText().equals(buttons[8].getText())) {
+
+            // Northwest-Southeast Diagonal
+            if (this.isEqual(this.buttons[0], this.buttons[4]) && this.isEqual(this.buttons[0], this.buttons[8])) {
                 return true;
             }
         }
 
-        if (!buttons[0].getText().equals(" ")) {
-            if (buttons[0].getText().equals(buttons[3].getText()) && buttons[0].getText().equals(buttons[6].getText())) {
-                return true;
-            }
-        }
-        
-        if (!buttons[1].getText().equals(" ")) {
-            if (buttons[1].getText().equals(buttons[4].getText()) && buttons[1].getText().equals(buttons[7].getText())) {
-                return true;
-            }
-        }
-        
-        if (!buttons[2].getText().equals(" ")) {
-            if (buttons[2].getText().equals(buttons[5].getText()) && buttons[2].getText().equals(buttons[8].getText())) {
+        if (this.isUnavailable(this.buttons[1])) {
+            // Second Column
+            if (this.isEqual(this.buttons[1], this.buttons[4]) && this.isEqual(this.buttons[1], this.buttons[7])) {
                 return true;
             }
         }
 
-        if (!buttons[0].getText().equals(" ")) {
-            if (buttons[0].getText().equals(buttons[4].getText()) && buttons[0].getText().equals(buttons[8].getText())) {
+        if (this.isUnavailable(this.buttons[2])) {
+            // Third Column
+            if (this.isEqual(this.buttons[2], this.buttons[5]) && this.isEqual(this.buttons[2], this.buttons[8])) {
+                return true;
+            }
+
+            // Northeast-Southwest Diagonal
+            if (this.isEqual(this.buttons[2], this.buttons[4]) && this.isEqual(this.buttons[2], this.buttons[6])) {
                 return true;
             }
         }
-        
-        if (!buttons[2].getText().equals(" ")) {
-            if (buttons[2].getText().equals(buttons[4].getText()) && buttons[2].getText().equals(buttons[6].getText())) {
+
+        if (this.isUnavailable(this.buttons[3])) {
+            // Middle Row
+            if (this.isEqual(this.buttons[3], this.buttons[4]) && this.isEqual(this.buttons[3], this.buttons[5])) {
+                return true;
+            }
+        }
+
+        if (this.isUnavailable(this.buttons[6])) {
+            // Bottom Row
+            if (this.isEqual(this.buttons[6], this.buttons[7]) && this.isEqual(this.buttons[6], this.buttons[8])) {
                 return true;
             }
         }
@@ -146,8 +120,44 @@ public class TicTacToeApplication extends Application {
         return false;
     }
 
+    private boolean isUnavailable(Button button) {
+        return !button.getText().equals(" ");
+    }
+
+    private boolean isEqual(Button buttonOne, Button buttonTwo) {
+        return buttonOne.getText().equals(buttonTwo.getText());
+    }
+
+    @Override
+    public void start(Stage window) {
+        this.turnLabel.setFont(new Font(30.0));
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        grid.add(this.buttons[0], 1, 0);
+        grid.add(this.buttons[1], 2, 0);
+        grid.add(this.buttons[2], 3, 0);
+        grid.add(this.buttons[3], 1, 1);
+        grid.add(this.buttons[4], 2, 1);
+        grid.add(this.buttons[5], 3, 1);
+        grid.add(this.buttons[6], 1, 2);
+        grid.add(this.buttons[7], 2, 2);
+        grid.add(this.buttons[8], 3, 2);
+
+        BorderPane layout = new BorderPane();
+        layout.setPrefSize(310, 350);
+        layout.setTop(this.turnLabel);
+        layout.setCenter(grid);
+
+        Scene view = new Scene(layout);
+        window.setScene(view);
+
+        window.show();
+    }
+
     public static void main(String[] args) {
         launch(TicTacToeApplication.class);
-        System.out.println("Hello world!");
     }
 }

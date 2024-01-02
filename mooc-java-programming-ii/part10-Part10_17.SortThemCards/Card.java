@@ -10,7 +10,7 @@ public class Card implements Comparable<Card> {
         this.value = value;
         this.suit = suit;
     }
-    
+
     public int getValue() {
         return value;
     }
@@ -18,7 +18,7 @@ public class Card implements Comparable<Card> {
     public Suit getSuit() {
         return suit;
     }
-    
+
     @Override
     public String toString() {
         String cardValue = "" + value;
@@ -31,15 +31,16 @@ public class Card implements Comparable<Card> {
         } else if (value == 14) {
             cardValue = "A";
         }
-        
+
         return suit + " " + cardValue;
     }
-    
+
     @Override
     public int compareTo(Card comparedCard) {
         if (this.value == comparedCard.getValue()) {
             return this.suit.ordinal() - comparedCard.getSuit().ordinal();
         }
+
         return this.value - comparedCard.getValue();
     }
 }

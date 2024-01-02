@@ -1,25 +1,26 @@
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class ReadingFilesPerLine {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // test the method here
+        ArrayList<String> fileRows = read("data.txt");
+
+        for (String row : fileRows) {
+            System.out.println(row);
+        }
     }
 
     public static List<String> read(String file) {
+        ArrayList<String> fileRows = new ArrayList<>();
+
         try {
-            return Files.lines(Paths.get(file))
-                .collect(Collectors.toCollection(ArrayList::new));
+            Files.lines(Paths.get(file)).forEach(row -> fileRows.add(row));
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            return new ArrayList<>();
         }
+
+        return fileRows;
     }
 }

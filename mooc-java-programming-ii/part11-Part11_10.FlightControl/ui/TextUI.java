@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package FlightControl.ui;
+package ui;
 
-/**
- *
- * @author JayBh
- */
-import FlightControl.domain.Flight;
-import FlightControl.domain.Airplane;
+import domain.Flight;
+import domain.Airplane;
+
 import java.util.Scanner;
-import FlightControl.logic.FlightControl;
+
+import logic.FlightControl;
 
 public class TextUI {
-
     private FlightControl flightControl;
     private Scanner scanner;
 
@@ -29,6 +21,7 @@ public class TextUI {
         // then the flight control
         startAssetControl();
         System.out.println();
+
         startFlightControl();
         System.out.println();
     }
@@ -67,7 +60,6 @@ public class TextUI {
     }
 
     private void addFlight() {
-        System.out.print("Give the airplane id: ");
         Airplane airplane = askForAirplane();
         System.out.print("Give the departure airport id: ");
         String departureID = scanner.nextLine();
@@ -91,6 +83,7 @@ public class TextUI {
 
             System.out.print("> ");
             String answer = scanner.nextLine();
+
             if (answer.equals("1")) {
                 printAirplanes();
             } else if (answer.equals("2")) {
@@ -104,26 +97,26 @@ public class TextUI {
     }
 
     private void printAirplanes() {
-        for (Airplane plane : flightControl.getAirplanes()) {
+        for (Airplane plane : this.flightControl.getAirplanes()) {
             System.out.println(plane);
         }
     }
 
     private void printFlights() {
-        for (Flight flight : flightControl.getFlights()) {
+        for (Flight flight : this.flightControl.getFlights()) {
             System.out.println(flight);
-            System.out.println("");
+            System.out.println();
         }
     }
 
     private void printAirplaneDetails() {
-        System.out.print("Give the airplane id: ");
-        Airplane plane = askForAirplane();
-        System.out.println(plane);
+        System.out.println(askForAirplane());
         System.out.println();
     }
 
     private Airplane askForAirplane() {
+        System.out.print("Give the airplane id: ");
+
         Airplane airplane = null;
         while (airplane == null) {
             String id = scanner.nextLine();

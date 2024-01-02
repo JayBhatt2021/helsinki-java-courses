@@ -1,5 +1,3 @@
-package notifier;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,20 +6,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class NotifierApplication  extends Application {
+public class NotifierApplication extends Application {
     @Override
-    public void start(Stage window) {
-        VBox labelBar = new VBox();
-        TextField topTxtField = new TextField("");
-        
-        Button btn = new Button("Update");
-        Label thirdLabel = new Label();
+    public void start(Stage window) {=
+        TextField topTextField = new TextField("");
+        Button button = new Button("Update");
+        Label label = new Label();
 
-        labelBar.getChildren().addAll(topTxtField, btn, thirdLabel);
+        VBox labelBar = new VBox();
+        labelBar.getChildren().addAll(topTextField, button, label);
 
         Scene view = new Scene(labelBar, 200, 100);
-        btn.setOnAction(event -> {
-            thirdLabel.setText(topTxtField.getText());
+        button.setOnAction(event -> {
+            label.setText(topTextField.getText());
         });
 
         window.setScene(view);
@@ -30,6 +27,6 @@ public class NotifierApplication  extends Application {
 
 
     public static void main(String[] args) {
-       launch(NotifierApplication.class);
+        launch(NotifierApplication.class);
     }
 }

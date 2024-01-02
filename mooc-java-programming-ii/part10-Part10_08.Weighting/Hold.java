@@ -5,30 +5,29 @@ public class Hold {
     private int maximumWeight;
 
     public Hold(int maximumWeight) {
-        this.maximumWeight = maximumWeight;
         this.suitcases = new ArrayList<>();
+        this.maximumWeight = maximumWeight;
     }
 
-    public void addSuitcase(Suitcase Suitcase) {
-        if (this.totalWeight() + Suitcase.totalWeight() > maximumWeight) {
-            return;
+    public void addSuitcase(Suitcase suitcase) {
+        if (this.totalWeight() + suitcase.totalWeight() <= maximumWeight) {
+            this.suitcases.add(suitcase);
         }
-
-        this.suitcases.add(Suitcase);
     }
 
     public int totalWeight() {
-         int totalWeight = this.suitcases.stream()
+        int totalWeight = this.suitcases.stream()
                 .mapToInt(suitcase -> suitcase.totalWeight())
-                .reduce(0, (previousTotalWeight, suitcaseWeight) -> 
-                    previousTotalWeight + suitcaseWeight
+                .reduce(0, (previousTotalWeight, suitcaseWeight) ->
+                        previousTotalWeight + suitcaseWeight
                 );
+
         return totalWeight;
     }
 
     public void printItems() {
         this.suitcases.stream()
-                  .forEach(suitcase -> suitcase.printItems());
+                .forEach(suitcase -> suitcase.printItems());
     }
 
     @Override

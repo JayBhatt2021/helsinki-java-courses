@@ -1,5 +1,3 @@
-package buttonandlabel;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,10 +16,9 @@ public class ButtonAndLabelApplication extends Application {
         componentGroup.getChildren().add(textComponent);
 
         Scene view = new Scene(componentGroup);
-
         window.setScene(view);
-        window.show();
 
+        window.show();
     }
 
     public static void main(String[] args) {

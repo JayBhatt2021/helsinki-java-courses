@@ -1,6 +1,4 @@
-
 public class SimpleDate {
-
     private int day;
     private int month;
     private int year;
@@ -21,14 +19,11 @@ public class SimpleDate {
             return true;
         }
 
-        if (this.year == other.year
-                && this.month < other.month) {
+        if (this.year == other.year && this.month < other.month) {
             return true;
         }
 
-        if (this.year == other.year
-                && this.month == other.month
-                && this.day < other.day) {
+        if (this.year == other.year && this.month == other.month && this.day < other.day) {
             return true;
         }
 

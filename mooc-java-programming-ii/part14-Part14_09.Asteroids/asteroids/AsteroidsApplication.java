@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,8 +17,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AsteroidsApplication extends Application {
-    Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
-    List<Projectile> projectiles = new ArrayList<>();
+    private Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
+    private List<Projectile> projectiles = new ArrayList<>();
 
     public static int WIDTH = 800;
     public static int HEIGHT = 600;
@@ -26,66 +27,69 @@ public class AsteroidsApplication extends Application {
     public void start(Stage stage) throws Exception {
         Pane pane = new Pane();
         pane.setPrefSize(WIDTH, HEIGHT);
-        
-        // points
-        Text text = new Text(10, 20, "Points: 0");
-        pane.getChildren().add(text);
+
+        // Points
         AtomicInteger points = new AtomicInteger();
-        
-        // creates polygon ship
+        Text pointsText = new Text(10, 20, "Points: 0");
+        pane.getChildren().add(pointsText);
+
+        // Creates the Polygon ship
         Ship ship = new Ship(WIDTH / 2, HEIGHT / 2);
         pane.getChildren().add(ship.getCharacter());
         Scene scene = new Scene(pane);
-        
-        // creates an astriod
+
+        // Creates the asteroids
         List<Asteroid> asteroids = new ArrayList<>();
-        
-        // sets the amount of asteroids 
+
         for (int i = 0; i < 15; i++) {
-            Random rnd = new Random();
-            Asteroid asteroid = new Asteroid(rnd.nextInt(WIDTH / 3), rnd.nextInt(HEIGHT));
-            asteroids.add(asteroid);
+            asteroids.add(new Asteroid(random.nextInt(WIDTH / 3), random.nextInt(HEIGHT)));
         }
 
         asteroids.forEach(asteroid -> pane.getChildren().add(asteroid.getCharacter()));
-        
+
         // Event Listeners
-        scene.setOnKeyPressed(event -> {
-            pressedKeys.put(event.getCode(), Boolean.TRUE);
+        scene.setOnKeyPressed(keyPress -> {
+            this.pressedKeys.put(keyPress.getCode(), Boolean.TRUE);
         });
 
-        scene.setOnKeyReleased(event -> {
-            pressedKeys.put(event.getCode(), Boolean.FALSE);
+        scene.setOnKeyReleased(keyRelease -> {
+            this.pressedKeys.put(keyRelease.getCode(), Boolean.FALSE);
         });
 
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                //adds a chace for a random asteroid to spawn
+                // Adds a chance for a random asteroid to spawn
                 if (Math.random() < 0.005) {
                     Asteroid asteroid = new Asteroid(WIDTH, HEIGHT);
+
                     if (!asteroid.collide(ship)) {
                         asteroids.add(asteroid);
                         pane.getChildren().add(asteroid.getCharacter());
                     }
                 }
 
-                if (pressedKeys.getOrDefault(KeyCode.LEFT, false)) {
+                // Ship Movement Controls
+                if (this.pressedKeys.getOrDefault(KeyCode.LEFT, false)) {
                     ship.turnLeft();
                 }
 
-                if (pressedKeys.getOrDefault(KeyCode.RIGHT, false)) {
+                if (this.pressedKeys.getOrDefault(KeyCode.RIGHT, false)) {
                     ship.turnRight();
                 }
 
-                if (pressedKeys.getOrDefault(KeyCode.UP, false)) {
+                if (this.pressedKeys.getOrDefault(KeyCode.UP, false)) {
                     ship.accelerate();
                 }
-                
-                if (pressedKeys.getOrDefault(KeyCode.SPACE, false) && projectiles.size() < 3) {
-                    // we shoot
-                    Projectile projectile = new Projectile((int) ship.getCharacter().getTranslateX(), (int) ship.getCharacter().getTranslateY());
+
+                // Ship Shooting Controls
+                if (this.pressedKeys.getOrDefault(KeyCode.SPACE, false) && projectiles.size() < 3) {
+                    Projectile projectile = new Projectile(
+                            (int) ship.getCharacter().getTranslateX(),
+                            (int) ship.getCharacter().getTranslateY()
+                    );
                     projectile.getCharacter().setRotate(ship.getCharacter().getRotate());
+
                     projectiles.add(projectile);
 
                     projectile.accelerate();
@@ -94,11 +98,12 @@ public class AsteroidsApplication extends Application {
                     pane.getChildren().add(projectile.getCharacter());
                 }
 
+                // Character Movement
                 ship.move();
                 asteroids.forEach(asteroid -> asteroid.move());
                 projectiles.forEach(projectile -> projectile.move());
 
-                // handles the projectiles disappearing and colliding
+                // Handles projectile collision and subsequent point incrementation
                 projectiles.forEach(projectile -> {
                     asteroids.forEach(asteroid -> {
                         if (projectile.collide(asteroid)) {
@@ -106,30 +111,37 @@ public class AsteroidsApplication extends Application {
                             asteroid.setAlive(false);
                         }
                     });
-                    
-                    // handles the points
+
                     if (!projectile.isAlive()) {
-                        text.setText("Points: " + points.addAndGet(1000));
+                        pointsText.setText("Points: " + points.addAndGet(1000));
                     }
                 });
 
+                // Removes dead projectiles
                 projectiles.stream()
                         .filter(projectile -> !projectile.isAlive())
                         .forEach(projectile -> pane.getChildren().remove(projectile.getCharacter()));
-                projectiles.removeAll(projectiles.stream()
-                        .filter(projectile -> !projectile.isAlive())
-                        .collect(Collectors.toList()));
 
+                projectiles.removeAll(
+                        projectiles.stream()
+                                .filter(projectile -> !projectile.isAlive())
+                                .collect(Collectors.toList())
+                );
+
+                // Removes dead asteroids
                 asteroids.stream()
                         .filter(asteroid -> !asteroid.isAlive())
                         .forEach(asteroid -> pane.getChildren().remove(asteroid.getCharacter()));
-                asteroids.removeAll(asteroids.stream()
-                        .filter(asteroid -> !asteroid.isAlive())
-                        .collect(Collectors.toList()));
+
+                asteroids.removeAll(
+                        asteroids.stream()
+                                .filter(asteroid -> !asteroid.isAlive())
+                                .collect(Collectors.toList())
+                );
             }
         }.start();
-        
-        stage.setTitle("Asteroids!");
+
+        stage.setTitle("Asteroids");
         stage.setScene(scene);
         stage.show();
     }

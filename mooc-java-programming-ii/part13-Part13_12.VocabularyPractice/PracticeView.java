@@ -1,5 +1,3 @@
-package application;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -18,13 +16,12 @@ public class PracticeView {
     }
 
     public Parent getView() {
-        GridPane layout = new GridPane();
-
         Label wordInstruction = new Label("Translate the word '" + this.word + "'");
         TextField translationField = new TextField();
         Button addButton = new Button("Check");
         Label feedback = new Label("");
 
+        GridPane layout = new GridPane();
         layout.setAlignment(Pos.CENTER);
         layout.setVgap(10);
         layout.setHgap(10);
@@ -37,11 +34,12 @@ public class PracticeView {
 
         addButton.setOnMouseClicked(event -> {
             String translation = translationField.getText();
+
             if (this.dictionary.get(word).equals(translation)) {
                 feedback.setText("Correct!");
             } else {
-                feedback.setText("Incorrect! The translation fo the word '"
-                        + word + "' is '" + this.dictionary.get(word) + "'.");
+                feedback.setText("Incorrect! The translation for the word '" + word + "' is '" +
+                        this.dictionary.get(word) + "'.");
                 return;
             }
 

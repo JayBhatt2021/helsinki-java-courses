@@ -1,7 +1,4 @@
-
-
 public class Warehouse {
-
     private double capacity;
     private double balance;
 
@@ -31,6 +28,7 @@ public class Warehouse {
         if (amount < 0) {
             return;
         }
+
         if (amount <= howMuchSpaceLeft()) {
             this.balance = this.balance + amount;
         } else {
@@ -42,6 +40,7 @@ public class Warehouse {
         if (amount < 0) {
             return 0.0;
         }
+
         if (amount > this.balance) {
             double allThatWeCan = this.balance;
             this.balance = 0.0;
@@ -52,6 +51,7 @@ public class Warehouse {
         return amount;
     }
 
+    @Override
     public String toString() {
         return "balance = " + this.balance + ", space left " + howMuchSpaceLeft();
     }

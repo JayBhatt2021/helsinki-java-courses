@@ -1,5 +1,3 @@
-package hurraa;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,13 +8,9 @@ public class HurraaSovellus extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         BorderPane pane = new BorderPane();
+        pane.setCenter(new Button("Hurraa!"));
 
-        Button btn = new Button("Hurraa!");
-        pane.setCenter(btn);
-
-        Scene scene = new Scene(pane, 600, 400);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(pane, 600, 400));
         stage.show();
     }
 

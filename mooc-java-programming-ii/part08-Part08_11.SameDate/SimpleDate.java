@@ -1,6 +1,4 @@
-
 public class SimpleDate {
-
     private int day;
     private int month;
     private int year;
@@ -21,14 +19,11 @@ public class SimpleDate {
             return true;
         }
 
-        if (this.year == other.year
-                && this.month < other.month) {
+        if (this.year == other.year && this.month < other.month) {
             return true;
         }
 
-        if (this.year == other.year
-                && this.month == other.month
-                && this.day < other.day) {
+        if (this.year == other.year && this.month == other.month && this.day < other.day) {
             return true;
         }
 
@@ -52,19 +47,18 @@ public class SimpleDate {
     }
 
     @Override
-    public boolean equals (Object comparedObject) {
+    public boolean equals(Object comparedObject) {
         if (this == comparedObject) {
-            return true; 
+            return true;
         }
-        
+
         if (!(comparedObject instanceof SimpleDate)) {
             return false;
         }
-        
+
         SimpleDate comparedDate = (SimpleDate) comparedObject;
-        if (this.day == comparedDate.day &&
-            this.month == comparedDate.month &&
-            this.year == comparedDate.year) {
+        if (this.day == comparedDate.day && this.month == comparedDate.month
+                && this.year == comparedDate.year) {
             return true;
         }
         return false;

@@ -1,9 +1,7 @@
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class MagicSquare {
-
     private int[][] square;
 
     // ready constructor
@@ -17,15 +15,52 @@ public class MagicSquare {
 
     // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
-        return new ArrayList<>();
+        int n = this.square.length;
+        ArrayList<Integer> rowSums = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = 0; j < n; j++) {
+                sum += this.square[i][j];
+            }
+            rowSums.add(sum);
+        }
+
+        return rowSums;
     }
 
     public ArrayList<Integer> sumsOfColumns() {
-        return new ArrayList<>();
+        int n = this.square.length;
+        ArrayList<Integer> columnSums = new ArrayList<>();
+
+        for (int j = 0; j < n; i++) {
+            int sum = 0;
+            for (int i = 0; i < n; i++) {
+                sum += this.square[i][j];
+            }
+            columnSums.add(sum);
+        }
+
+        return columnSums;
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
+        int n = this.square.length, sum = 0;
+        sumTwo = 0;
+        ArrayList<Integer> diagonalSums = new ArrayList<>();
+
+        for (int i = 0, j = 0; i < n && j < n; i++, j++) {
+            sum += this.square[i][j];
+        }
+        diagonalSums.add(sum);
+
+        sum = 0;
+        for (int i = 0, j = n - 1; i < n && j >= 0; i++, j--) {
+            sum += this.square[i][j];
+        }
+        diagonalSums.add(sum);
+
+        return diagonalSums;
     }
 
     // ready-made helper methods -- don't touch these
@@ -78,7 +113,7 @@ public class MagicSquare {
 
     public int readValue(int x, int y) {
         if (x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) {
-            return - 1;
+            return -1;
         }
 
         return this.square[y][x];

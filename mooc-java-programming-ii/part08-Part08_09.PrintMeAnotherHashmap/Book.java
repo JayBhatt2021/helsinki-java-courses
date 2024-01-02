@@ -1,9 +1,7 @@
-
 public class Book {
-
     private String name;
-    private String contents;
     private int publicationYear;
+    private String contents;
 
     public Book(String name, int publicationYear, String contents) {
         this.name = name;
@@ -36,7 +34,7 @@ public class Book {
     }
 
     public String toString() {
-        return "Name: " + this.name + " (" + this.publicationYear + ")\n"
-                + "Contents: " + this.contents;
+        return "Name: " + this.name + " (" + this.publicationYear + ")\n" +
+                "Contents: " + this.contents;
     }
 }

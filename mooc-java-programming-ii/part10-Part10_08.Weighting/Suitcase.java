@@ -5,30 +5,29 @@ public class Suitcase {
     private ArrayList<Item> items;
 
     public Suitcase(int maximumWeight) {
-        this.items = new ArrayList<>();
         this.maximumWeight = maximumWeight;
+        this.items = new ArrayList<>();
     }
 
-    public void addItem(Item Item) {
-        if (this.totalWeight() + Item.getWeight() > this.maximumWeight) {
-            return;
+    public void addItem(Item item) {
+        if (this.totalWeight() + item.getWeight() <= this.maximumWeight) {
+            this.items.add(item);
         }
-
-        this.items.add(Item);
     }
 
     public int totalWeight() {
         int totalWeight = this.items.stream()
                 .mapToInt(item -> item.getWeight())
-                .reduce(0, (previousTotalWeight, itemWeight) -> 
-                    previousTotalWeight + itemWeight
+                .reduce(0, (previousTotalWeight, itemWeight) ->
+                        previousTotalWeight + itemWeight
                 );
+
         return totalWeight;
     }
 
     public void printItems() {
         this.items.stream()
-                  .forEach(item -> System.out.println(item));
+                .forEach(item -> System.out.println(item));
     }
 
     public Item heaviestItem() {
@@ -37,8 +36,8 @@ public class Suitcase {
         }
 
         return this.items.stream()
-                   .max((t1, t2) -> t1.getWeight() - t2.getWeight())
-                   .get();
+                .max((i1, i2) -> i1.getWeight() - i2.getWeight())
+                .get();
     }
 
     @Override

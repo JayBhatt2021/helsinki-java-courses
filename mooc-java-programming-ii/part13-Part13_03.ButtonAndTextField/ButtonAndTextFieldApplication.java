@@ -1,7 +1,7 @@
-package buttonandtextfield;
-
 import javafx.application.Application;
+
 import static javafx.application.Application.launch;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -11,21 +11,21 @@ import javafx.stage.Stage;
 public class ButtonAndTextFieldApplication extends Application {
     @Override
     public void start(Stage window) {
-        Button btn = new Button("Button");
-
-        TextField txtField = new TextField();
+        Button button = new Button("Button");
+        TextField textField = new TextField();
         Pane pane = new Pane();
 
-        pane.getChildren().add(btn);
-        pane.getChildren().add(txtField);
-        
-        btn.setLayoutX(100);
-        btn.setLayoutY(100);
-        txtField.setLayoutX(250);
-        txtField.setLayoutY(250);
-     
+        pane.getChildren().add(button);
+        pane.getChildren().add(textField);
+
+        button.setLayoutX(100);
+        button.setLayoutY(100);
+        textField.setLayoutX(250);
+        textField.setLayoutY(250);
+
         Scene view = new Scene(pane, 500, 500);
         window.setScene(view);
+
         window.show();
     }
 

@@ -1,7 +1,8 @@
-
 public class Main {
-
     public static void main(String[] args) {
-        // Test your code here!
+        CustomTacoBox c = CustomTacoBox(5);
+
+        c.eat();
+        System.out.println(c.tacosRemaining());
     }
 }

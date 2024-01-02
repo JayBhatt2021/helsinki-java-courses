@@ -13,18 +13,18 @@ public class Book {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getPublishingYear() {
-        return publishingYear;
-    }
-
-    public String getAuthor() {
-        return author;
+        return this.publishingYear;
     }
 
     public int getPagecount() {
-        return pageCount;
+        return this.pageCount;
+    }
+
+    public String getAuthor() {
+        return this.author;
     }
 }

@@ -1,7 +1,7 @@
-package application;
-
 import javafx.application.Application;
+
 import static javafx.application.Application.launch;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,34 +15,34 @@ import javafx.stage.Stage;
 public class GreeterApplication extends Application {
     @Override
     public void start(Stage windows) {
-        GridPane gPane = new GridPane();
         Label firstLabel = new Label("Enter your name and start");
-        Button firstBtn = new Button("Start");
-        TextField tField = new TextField();
-    
+        TextField textField = new TextField();
+        Button firstButton = new Button("Start");
+        GridPane gPane = new GridPane();
+
         gPane.add(firstLabel, 0, 0);
-        gPane.add(tField, 0, 1);
-        gPane.add(firstBtn, 0, 2);
-    
+        gPane.add(textField, 0, 1);
+        gPane.add(firstButton, 0, 2);
+
         Scene firstScene = new Scene(gPane, 300, 180);
-    
+
         gPane.setPrefSize(300, 180);
         gPane.setAlignment(Pos.CENTER);
         gPane.setVgap(10);
         gPane.setHgap(10);
         gPane.setPadding(new Insets(20, 20, 20, 20));
-        
-        StackPane  secondPane = new StackPane();
+
         Label secondLabel = new Label();
+        StackPane secondPane = new StackPane();
         secondPane.getChildren().add(secondLabel);
-      
+
         Scene secondScene = new Scene(secondPane, 300, 180);
-        
-        firstBtn.setOnAction(event -> {
-            secondLabel.setText("Welcome " + tField.getText() + "!");
+
+        firstButton.setOnAction(event -> {
+            secondLabel.setText("Welcome " + textField.getText() + "!");
             windows.setScene(secondScene);
         });
-      
+
         windows.setScene(firstScene);
         windows.show();
     }

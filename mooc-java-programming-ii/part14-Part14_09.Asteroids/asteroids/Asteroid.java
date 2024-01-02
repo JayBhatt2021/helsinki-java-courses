@@ -3,26 +3,26 @@ package asteroids;
 import java.util.Random;
 
 public class Asteroid extends Character {
-    private double rotationalMovement;
     private boolean alive;
-  
+    private double rotationalMovement;
+
     public Asteroid(int x, int y) {
         super(new PolygonFactory().createPolygon(), x, y);
 
-        Random rnd = new Random();
-        super.getCharacter().setRotate(rnd.nextInt(360));
+        Random random = new Random();
+        super.getCharacter().setRotate(random.nextInt(360));
 
-        int accelerationAmount = 1 + rnd.nextInt(10);
+        int accelerationAmount = random.nextInt(10) + 1;
         for (int i = 0; i < accelerationAmount; i++) {
-            accelerate();
+            super.accelerate();
         }
+
         this.alive = true;
-        
-        this.rotationalMovement = 0.5 - rnd.nextDouble();
+        this.rotationalMovement = 0.5 - random.nextDouble();
     }
 
     public boolean isAlive() {
-        return alive;
+        return this.alive;
     }
 
     public void setAlive(boolean alive) {
@@ -32,6 +32,6 @@ public class Asteroid extends Character {
     @Override
     public void move() {
         super.move();
-        super.getCharacter().setRotate(super.getCharacter().getRotate() + rotationalMovement);
+        super.getCharacter().setRotate(super.getCharacter().getRotate() + this.rotationalMovement);
     }
 }

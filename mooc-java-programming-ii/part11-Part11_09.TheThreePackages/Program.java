@@ -1,11 +1,11 @@
-
-import java.util.Scanner;
+import a.A;
+import b.B;
+import c.C;
 
 public class Program {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // you can test your classes here
-
+        System.out.println(new A());
+        System.out.println(new B());
+        System.out.println(new C());
     }
 }

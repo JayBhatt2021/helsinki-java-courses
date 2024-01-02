@@ -1,6 +1,4 @@
-
 public class Item {
-
     private String name;
     private int weight;
 
@@ -20,12 +18,12 @@ public class Item {
     public int getWeight() {
         return weight;
     }
-    
+
     @Override
     public int hashCode() {
         return this.name.hashCode();
     }
-    
+
     @Override
     public boolean equals(Object comparedObject) {
         if (this == comparedObject) {

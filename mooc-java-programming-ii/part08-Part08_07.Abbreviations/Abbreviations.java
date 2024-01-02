@@ -1,13 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author JayBh
- */
 import java.util.HashMap;
 
 public class Abbreviations {
@@ -19,6 +9,7 @@ public class Abbreviations {
     
     public void addAbbreviation(String abbreviation, String explanation) {
         abbreviation = sanitizedString(abbreviation);
+
         if (this.dict.containsKey(abbreviation)) {
             System.out.println("Already in dict");
         } else {

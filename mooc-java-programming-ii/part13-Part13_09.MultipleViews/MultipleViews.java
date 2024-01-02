@@ -1,5 +1,3 @@
-package application;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,33 +11,37 @@ public class MultipleViews extends Application {
     @Override
     public void start(Stage windows) {
         BorderPane firstBorderPane = new BorderPane();
-        firstBorderPane.setTop(new Label("First View"));
-        Button firstBtn = new Button("To second view");
-        firstBorderPane.setCenter(firstBtn);
-        Scene firstScene = new Scene(firstBorderPane, 300, 300);
+        Button firstButton = new Button("To second view");
 
-        VBox secVBox = new VBox();
-        Button secondBtn = new Button("To the third view");
+        firstBorderPane.setTop(new Label("First View"));
+        firstBorderPane.setCenter(firstButton);
+
+        Button secondButton = new Button("To the third view");
         Label secondLabel = new Label("Second view");
-        secVBox.getChildren().addAll(secondBtn, secondLabel);
-        Scene secondScene = new Scene(secVBox, 300, 300);
-        
-        GridPane gPane = new GridPane();
-        Button thirdBtn = new Button("To the first view");
+        VBox vBox = new VBox();
+
+        vBox.getChildren().addAll(secondButton, secondLabel);
+
+        Button thirdButton = new Button("To the first view");
         Label thirdLabel = new Label("Third view");
+        GridPane gPane = new GridPane();
+
+        gPane.add(thirdButton, 1, 1);
         gPane.add(thirdLabel, 0, 0);
-        gPane.add(thirdBtn, 1, 1);
+
+        Scene firstScene = new Scene(firstBorderPane, 300, 300);
+        Scene secondScene = new Scene(vBox, 300, 300);
         Scene thirdScene = new Scene(gPane, 300, 300);
 
-        firstBtn.setOnAction(event -> {
+        firstButton.setOnAction(event -> {
             windows.setScene(secondScene);
         });
-        
-        secondBtn.setOnAction(event -> {
+
+        secondButton.setOnAction(event -> {
             windows.setScene(thirdScene);
         });
-        
-        thirdBtn.setOnAction(event -> {
+
+        thirdButton.setOnAction(event -> {
             windows.setScene(firstScene);
         });
 

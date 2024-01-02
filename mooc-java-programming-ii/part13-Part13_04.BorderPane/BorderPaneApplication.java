@@ -1,5 +1,3 @@
-package borderpane;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,8 +14,8 @@ public class BorderPaneApplication extends Application {
         borderLayout.setBottom(new Label("SOUTH"));
 
         Scene view = new Scene(borderLayout, 300, 500);
-
         window.setScene(view);
+
         window.show();
     }
 

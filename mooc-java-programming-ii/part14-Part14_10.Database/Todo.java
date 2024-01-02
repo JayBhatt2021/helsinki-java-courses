@@ -1,7 +1,4 @@
-package application;
-
 public class Todo {
-
     private int id;
     private String name;
     private String description;
@@ -19,7 +16,7 @@ public class Todo {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -27,7 +24,7 @@ public class Todo {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -35,7 +32,7 @@ public class Todo {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -43,7 +40,7 @@ public class Todo {
     }
 
     public Boolean getDone() {
-        return done;
+        return this.done;
     }
 
     public void setDone(Boolean done) {
@@ -52,7 +49,6 @@ public class Todo {
 
     @Override
     public String toString() {
-        return "Todo{" + "id=" + id + ", name=" + name + ", description=" + description + ", done=" + done + '}';
+        return "Todo{id=" + id + ", name=" + name + ", description=" + description + ", done=" + done + "}";
     }
-
 }

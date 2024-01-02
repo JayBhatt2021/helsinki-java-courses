@@ -1,5 +1,3 @@
-package application;
-
 import java.util.HashMap;
 
 public class SavingsCalculator {
@@ -9,50 +7,53 @@ public class SavingsCalculator {
     HashMap<Integer, Double> nextYearsAmountWithRates;
 
     public SavingsCalculator() {
-        monthlySavings = 25.0;
-        yearlyInterestRate = 0.0;
-        nextYearsAmountNoRates = new HashMap<>();
-        nextYearsAmountWithRates = new HashMap<>();
+        this.monthlySavings = 25.0;
+        this.yearlyInterestRate = 0.0;
+        this.nextYearsAmountNoRates = new HashMap<>();
+        this.nextYearsAmountWithRates = new HashMap<>();
+    }
+
+    public Double getMonthlySavings() {
+        return this.monthlySavings;
     }
 
     public void setMonthlySavings(Double monthlySavings) {
         this.monthlySavings = monthlySavings;
     }
 
+    public Double getYearlyInterestRate() {
+        return this.yearlyInterestRate;
+    }
+
     public void setYearlyInterestRate(Double yearlyInterestRate) {
         this.yearlyInterestRate = yearlyInterestRate / 100;
     }
 
-    public Double getMonthlySavings() {
-        return monthlySavings;
-    }
-
-    public Double getYearlyInterestRate() {
-        return yearlyInterestRate;
-    }
-
     public HashMap<Integer, Double> getNextYearsAmountNoRates() {
-        return nextYearsAmountNoRates;
-    }
-
-    public HashMap<Integer, Double> getNextYearsAmountWithRates() {
-        return nextYearsAmountWithRates;
+        return this.nextYearsAmountNoRates;
     }
 
     public void calculateYearlyAmountNoRates() {
-        nextYearsAmountNoRates.put(0, 0.0);
+        this.nextYearsAmountNoRates.put(0, 0.0);
+
         for (int years = 1; years <= 30; years++) {
-            nextYearsAmountNoRates.put(years, monthlySavings * years * 12);
+            this.nextYearsAmountNoRates.put(years, this.monthlySavings * 12 * years);
         }
     }
 
+    public HashMap<Integer, Double> getNextYearsAmountWithRates() {
+        return this.nextYearsAmountWithRates;
+    }
+
     public void calculateYearlyAmountWithRates() {
-        Double savedInAYear = monthlySavings * 12;
-        Double currentAmount = 0.0;       
-        nextYearsAmountWithRates.put(0, 0.0);         
+        Double yearlySavings = this.monthlySavings * 12;
+        Double currentAmount = 0.0;
+
+        this.nextYearsAmountWithRates.put(0, 0.0);
+
         for (int years = 1; years <= 30; years++) {
-            currentAmount = (savedInAYear + currentAmount) * (yearlyInterestRate + 1);
-            nextYearsAmountWithRates.put(years, currentAmount);
+            currentAmount = (yearlySavings + currentAmount) * (this.yearlyInterestRate + 1);
+            this.nextYearsAmountWithRates.put(years, currentAmount);
         }
     }
 }
